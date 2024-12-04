@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static %}
+<div class="row"><!-- la fila -->
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- la columna izquierda -->
+
+    <h1>Editar </h1>
+
+    <div class="card"> <!-- la tarjeta -->
+      <div class="card-body">
+        <form action="registrarFacturas/" method="POST"> {% csrf_token %}<!-- falta action -->
+          <div class="form-group">
+            <input type="text" id="txtid_fac" name="txtid_fac" class="form-control" placeholder="id_fac" minlength="1" maxlength="6" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txttotal" name="txttotal" class="form-control" placeholder="Total" min="1" max="9" required>
+          </div>
+          <div class="form-group py-2">
+            <input type="text" id="txtarea" name="txtarea" class="form-control" maxlength="100"  placeholder="Area" required>
+          </div>
+          <div class="form-group py-4">
+            <input type="text" id="txtestado" name="txtestado" class="form-control" maxlength="100"  placeholder="Estado" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="date" id="txtfecha" name="txtfecha" class="form-control" placeholder="Fecha"  max="2099-12-31" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtmet_pago" name="txtmet_pago" class="form-control" placeholder="Metodo_pago" maxlength="100" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtid_suc" name="txtid_suc" class="form-control" placeholder="id_suc" maxlength="100" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtid_prod" name="txtid_prod" class="form-control" placeholder="id_prod" maxlength="100" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtid_cli" name="txtid_cli" class="form-control" placeholder="id_cli" maxlength="100" required>
+          </div>
+          <div class="form-group py-3">
+            <input type="text" id="txtid_emp" name="txtid_emp" class="form-control" placeholder="id_emp" maxlength="100" required>
+          </div>
+          <div class="form-group py-2">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div> <!-- la tarjeta -->
+
+  </div><!-- la columna izquierda -->
+
+  <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!-- la columna derecha -->
+
+    <h1> Listado de Facturas</h1>
+    <img class="w-50" src="{% static 'img/facturasimagen.jpg' %}" alt="hoa" width="100" height="auto">
+    <br>
+    <br>
+    <!-- la tabla -->
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">id_fac</th>
+          <th scope="col">Total</th>
+          <th scope="col">Area</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Metodo Pago</th>
+          <th scope="col">id_suc</th>
+          <th scope="col">id_prod</th>
+          <th scope="col">id_cli</th>
+          <th scope="col">id_emp</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in mismaterias  %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{m.id_fac}}</td>
+          <td>{{m.total}}</td>
+          <td>{{m.area}}</td>
+          <td>{{m.estado}}</td>
+          <td>{{m.fecha}}</td>
+          <td>{{m.met_pago}}</td>
+          <td>{{m.id_suc}}</td>
+          <td>{{m.id_prod}}</td>
+          <td>{{m.id_cli}}</td>
+          <td>{{m.id_emp}}</td>
+          <th><a href="seleccionarFacturas/{{m.id_fac}}" class="btn btn-info ">editar</a></th><!-- falta -->
+          <th><a href="borrarFacturas/{{m.id_fac}}" class="btn btn-danger">borrar</a></th><!-- falta -->
+      </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+
+    <!-- la tabla -->
+
+  </div><!-- la columna derecha -->
+
+</div><!-- la fila -->
+
+{% endblock %}

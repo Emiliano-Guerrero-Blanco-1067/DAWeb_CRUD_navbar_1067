@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4 ">
+        <h2>Editar Producto</h2>
+        <!-- Aqui codigo tarjeta -->
+
+    <div class="card"> <!-- la tarjeta -->
+        <div class="card-body">
+            <form action="/editarEmpleado/" method="POST"> {% csrf_token %}<!-- falta action -->
+            <div class="form-group">
+                <input type="text" id="txtid_emp" name="txtid_emp" class="form-control" value="{{mismaterias.id_emp}}" minlength="1" maxlength="6" readonly required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{mismaterias.nombre}}" maxlength="100" required>
+            </div>
+            <div class="form-group py-2">
+                <input type="text" id="txtapellido" name="txtapellido" class="form-control" maxlength="100" value="{{mismaterias.apellido}}" required>
+            </div>
+            <div class="form-group py-4">
+                <input type="text" id="txtpuesto" name="txtpuesto" class="form-control"  maxlength="100" value="{{mismaterias.puesto}}" required>
+            </div>
+            <div class="form-group py-5">
+                <input type="text" id="txtfecha_contratacion" name="txtfecha_contratacion" class="form-control" value="{{mismaterias.fecha_contratacion}}" maxlength="100" required>
+            </div>
+            <div class="form-group py-6">
+                <input type="text" id="txtsalario_quincena" name="txtsalario_quincena" class="form-control" value="{{mismaterias.salario_quincena}}" min="1" max="9" required>
+            </div>
+            <div class="form-group py-7">
+                <input type="text" id="txtdni" name="txtdni" class="form-control" value="{{mismaterias.dni}}" maxlength="100" required>
+            </div>
+            <div class="form-group py-8">
+                <input type="text" id="txtid_suc" name="txtid_suc" class="form-control" value="{{mismaterias.id_suc}}" maxlength="100" required>
+            </div>
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            </form>
+        </div>
+        </div> <!-- la tarjeta -->
+
+        <!-- Aqui codigo tarjeta -->
+        
+    </div>
+</div><!-- fila en editar  -->
+
+{% endblock cuerpo %}
+
+
